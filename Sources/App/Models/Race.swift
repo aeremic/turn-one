@@ -16,8 +16,8 @@ final class Race: Model, Content, @unchecked Sendable {
   @Field(key: "date")
   var date: Date
 
-  @OptionalParent(key: "schedule_id")
-  var schedule: Schedule?
+  @Children(for: \.$race)
+  var schedules: [Schedule]
 
   init() {}
 

@@ -13,8 +13,8 @@ final class Schedule: Model, Content, @unchecked Sendable {
   @Field(key: "date")
   var date: Date
 
-  @Children(for: \.$schedule)
-  var races: [Race]
+  @Parent(key: "race_id")
+  var race: Race
 
   init() {}
 
