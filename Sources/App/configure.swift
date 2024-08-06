@@ -34,7 +34,7 @@ public func configure(_ app: Application) async throws {
   // app.migrations.add(CreateTodo())
   app.migrations.add(CreateRace())
   app.migrations.add(CreateSchedule())
-  app.migrations.add(ScheduleRaceRelation())
+  app.migrations.add(AddScheduleRaceRelation())
 
   // register routes
   try routes(app)
