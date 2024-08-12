@@ -7,8 +7,8 @@ import struct Foundation.UUID
 final class Schedule: Model, Content, @unchecked Sendable {
   static let schema: String = "schedules"
 
-  @ID(key: .id)
-  var id: UUID?
+  @ID(custom: "id")
+  var id: Int?
 
   @Field(key: "date")
   var date: Date
@@ -18,7 +18,7 @@ final class Schedule: Model, Content, @unchecked Sendable {
 
   init() {}
 
-  init(id: UUID? = nil, date: Date) {
+  init(id: Int? = nil, date: Date) {
     self.id = id
     self.date = date
   }

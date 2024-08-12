@@ -3,7 +3,7 @@ import Fluent
 struct CreateRace: AsyncMigration {
   func prepare(on database: Database) async throws {
     try await database.schema("races")
-      .id()
+      .field("id", .int, .identifier(auto: true))
       .field("title", .string)
       .field("date", .date)
       .create()

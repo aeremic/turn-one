@@ -23,7 +23,7 @@ struct TodoController: RouteCollection {
 
     try await todo.save(on: req.db)
     return todo.toDTO()
-  }
+  } 
 
   @Sendable
   func delete(req: Request) async throws -> HTTPStatus {

@@ -7,8 +7,8 @@ import struct Foundation.UUID
 final class Race: Model, Content, @unchecked Sendable {
   static let schema: String = "races"
 
-  @ID(key: .id)
-  var id: UUID?
+  @ID(custom: "id")
+  var id: Int?
 
   @Field(key: "title")
   var title: String
@@ -21,7 +21,7 @@ final class Race: Model, Content, @unchecked Sendable {
 
   init() {}
 
-  init(id: UUID? = nil, title: String, date: Date) {
+  init(id: Int? = nil, title: String, date: Date) {
     self.id = id
     self.title = title
     self.date = date
