@@ -6,7 +6,7 @@ struct RaceController: RouteCollection {
     let races = routes.grouped("races")
 
     races.get(use: self.index)
-    // races.post(use: self.create)
+    races.post(use: self.create)
     races.group(":id") { race in
       race.get(use: self.get)
     }
@@ -31,6 +31,7 @@ struct RaceController: RouteCollection {
   func create(req: Request) async throws -> Race {
     let race = try req.content.decode(Race.self)
 
+    race.date = Date()  // TODO: minutes are lost when saving to Postgres
     try await race.save(on: req.db)
 
     return race
