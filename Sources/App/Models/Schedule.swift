@@ -10,6 +10,9 @@ final class Schedule: Model, Content, @unchecked Sendable {
   @ID(custom: "id")
   var id: Int?
 
+  @Field(key: "name")
+  var name: String
+
   @Field(key: "date")
   var date: Date
 
