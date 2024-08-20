@@ -5,7 +5,7 @@ struct CreateSchedule: AsyncMigration {
     try await database.schema("schedules")
       .field("id", .int, .identifier(auto: true))
       .field("title", .string)
-      .field("date", .date)
+      .field("date", .datetime)
       .create()
   }
 

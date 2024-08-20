@@ -5,7 +5,7 @@ struct CreateRace: AsyncMigration {
     try await database.schema("races")
       .field("id", .int, .identifier(auto: true))
       .field("title", .string)
-      .field("date", .date)
+      .field("date", .datetime)
       .create()
   }
 
