@@ -32,7 +32,14 @@ struct RaceController: RouteCollection {
     let race = try req.content.decode(Race.self)
 
     // race.date = Date()
+    // let schedules = [
+    //   Schedule(title: "schedule1", date: Date()),
+    //   Schedule(title: "schedule2", date: Date()),
+    // ]
+
     try await race.save(on: req.db)
+
+    // try await race.$schedules.create(schedules, on: req.db)
 
     return race
   }
