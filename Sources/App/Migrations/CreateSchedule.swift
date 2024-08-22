@@ -6,8 +6,7 @@ struct CreateSchedule: AsyncMigration {
       .field("id", .int, .identifier(auto: true))
       .field("title", .string)
       .field("date", .datetime)
-      .field("race_id", .int, .required)
-      .foreignKey("race_id", references: Race.schema, .id, onDelete: .cascade)
+      .field("race_id", .int, .references("races", "id", onDelete: .cascade))
       .create()
   }
 

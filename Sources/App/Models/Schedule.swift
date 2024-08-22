@@ -19,9 +19,6 @@ final class Schedule: Model, Content, @unchecked Sendable {
   @Parent(key: "race_id")
   var race: Race
 
-  @Field(key: "race_id")
-  var raceId: Int
-
   init() {}
 
   init(id: Int? = nil, title: String, date: Date) {
