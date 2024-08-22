@@ -6,7 +6,7 @@ struct RaceController: RouteCollection {
     let races = routes.grouped("races")
 
     races.get(use: self.index)
-    // races.post(use: self.create)
+    races.post(use: self.create)
     races.group(":id") { race in
       race.get(use: self.get)
     }
@@ -14,7 +14,11 @@ struct RaceController: RouteCollection {
 
   @Sendable
   func index(req: Request) async throws -> [Race] {
-    try await Race.query(on: req.db).all()
+    let races: [Race] = try await Race.query(on: req.db)
+      .with(\.$schedules)
+      .all()
+
+    return races
   }
 
   @Sendable
@@ -31,7 +35,7 @@ struct RaceController: RouteCollection {
   func create(req: Request) async throws -> Race {
     let race = try req.content.decode(Race.self)
 
-    // race.date = Date()
+    race.date = Date()
     // let schedules = [
     //   Schedule(title: "schedule1", date: Date()),
     //   Schedule(title: "schedule2", date: Date()),

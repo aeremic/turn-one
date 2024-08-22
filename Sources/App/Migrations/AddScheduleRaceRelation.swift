@@ -1,5 +1,6 @@
 import Fluent
 
+// Not used.
 struct AddScheduleRaceRelation: AsyncMigration {
   func prepare(on database: Database) async throws {
     try await database.schema("schedules")

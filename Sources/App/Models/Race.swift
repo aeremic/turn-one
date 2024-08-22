@@ -21,9 +21,10 @@ final class Race: Model, Content, @unchecked Sendable {
 
   init() {}
 
-  init(id: Int? = nil, title: String, date: Date) {
+  init(id: Int? = nil, title: String, date: Date, schedules: [Schedule]) {
     self.id = id
     self.title = title
     self.date = date
+    self.schedules = schedules
   }
 }
