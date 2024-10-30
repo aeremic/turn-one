@@ -1,28 +1,35 @@
+-- CHAMPIONSHIPS ---
+
+insert into championships (title, description)
+values ('World Endurance Championship', 'Description');
+
+-- CHAMPIONSHIPS ---
+
 -- RACES ---
 
-insert into races (title, "date")
-values ('Qatar 1812km', '2024-03-02');
+insert into races (title, "date", "championship_id")
+values ('Qatar 1812km', '2024-03-02', 1);
 
-insert into races (title, "date")
-values ('6h of Imola', '2024-04-21');
+insert into races (title, "date", "championship_id")
+values ('6h of Imola', '2024-04-21', 1);
 
-insert into races (title, "date")
-values ('6h of Spa-Francorchamps', '2024-05-11');
+insert into races (title, "date", "championship_id")
+values ('6h of Spa-Francorchamps', '2024-05-11', 1);
 
-insert into races (title, "date")
-values ('24h of Le Mans', '2024-05-11');
+insert into races (title, "date", "championship_id")
+values ('24h of Le Mans', '2024-05-11', 1);
 
-insert into races (title, "date")
-values ('6h of Sao Paulo', '2024-07-14');
+insert into races (title, "date", "championship_id")
+values ('6h of Sao Paulo', '2024-07-14', 1);
 
-insert into races (title, "date")
-values ('Lone Star Le Mans', '2024-09-01');
+insert into races (title, "date", "championship_id")
+values ('Lone Star Le Mans', '2024-09-01', 1);
 
-insert into races (title, "date")
-values ('6h of Fuji', '2024-09-15');
+insert into races (title, "date", "championship_id")
+values ('6h of Fuji', '2024-09-15', 1);
 
-insert into races (title, "date")
-values ('8h of Bahrain', '2024-09-15');
+insert into races (title, "date", "championship_id")
+values ('8h of Bahrain', '2024-09-15', 1);
 
 -- RACES --
 
