@@ -20,13 +20,6 @@ struct RaceController: RouteCollection {
             .sort(Race.self, \.$date)
             .all()
 
-        // TODO: Sort in db instead of memory sort.
-        for race in races {
-            race.schedules = race.schedules.sorted { schedule1, schedule2 in
-                schedule1.date > schedule2.date
-            }
-        }
-
         return races
     }
 
