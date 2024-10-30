@@ -22,15 +22,20 @@ final class Race: Model, Content, @unchecked Sendable {
     @Parent(key: "championship_id")
     var championship: Championship
 
+    @Field(key: "championship_id")
+    var championshipId: Int
+
     init() {}
 
     init(
-        id: Int? = nil, title: String, date: Date, schedules: [Schedule], championship: Championship
+        id: Int? = nil, title: String, date: Date, schedules: [Schedule],
+        championship: Championship, championshipId: Int
     ) {
         self.id = id
         self.title = title
         self.date = date
         self.schedules = schedules
         self.championship = championship
+        self.championshipId = championshipId
     }
 }

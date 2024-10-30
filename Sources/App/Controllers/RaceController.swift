@@ -11,11 +11,36 @@ struct RaceController: RouteCollection {
         races.group(":id") { race in
             race.get(use: self.get)
         }
+
+        races.group("getByChampionship", ":id") { race in
+            race.get(use: self.getByChampionship)
+        }
     }
 
     @Sendable
     func index(req: Request) async throws -> [Race] {
         let races: [Race] = try await Race.query(on: req.db)
+            .with(\.$schedules)
+            .sort(Race.self, \.$date)
+            .all()
+
+        return races
+    }
+
+    @Sendable
+    func getByChampionship(req: Request) async throws -> [Race] {
+        guard let requestId = req.parameters.get("id")
+        else {
+            throw Abort(.badRequest)
+        }
+
+        guard let championshipId = Int(requestId)
+        else {
+            throw Abort(.badRequest)
+        }
+
+        let races: [Race] = try await Race.query(on: req.db)
+            .filter(\.$championship.$id == championshipId)
             .with(\.$schedules)
             .sort(Race.self, \.$date)
             .all()
