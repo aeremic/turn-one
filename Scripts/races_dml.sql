@@ -3,6 +3,9 @@
 insert into championships (title, description)
 values ('World Endurance Championship', 'Description');
 
+insert into championships (title, description)
+values ('Formula 1', 'Description');
+
 -- CHAMPIONSHIPS ---
 
 -- RACES ---
