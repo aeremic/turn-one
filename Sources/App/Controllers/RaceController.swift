@@ -2,6 +2,29 @@ import Fluent
 import FluentSQL
 import Vapor
 
+final class RaceDto: Content, @unchecked Sendable {
+    var id: Int?
+    var title: String
+    var date: Date
+    var schedules: [Schedule]
+
+    init() {
+        self.id = nil
+        self.title = ""
+        self.date = Date()
+        self.schedules = []
+    }
+
+    init(
+        id: Int? = nil, title: String, date: Date, schedules: [Schedule]
+    ) {
+        self.id = id
+        self.title = title
+        self.date = date
+        self.schedules = schedules
+    }
+}
+
 struct RaceController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         let races = routes.grouped("races")
@@ -28,7 +51,7 @@ struct RaceController: RouteCollection {
     }
 
     @Sendable
-    func getByChampionship(req: Request) async throws -> [Race] {
+    func getByChampionship(req: Request) async throws -> [RaceDto] {
         guard let requestId = req.parameters.get("id")
         else {
             throw Abort(.badRequest)
@@ -45,7 +68,13 @@ struct RaceController: RouteCollection {
             .sort(Race.self, \.$date)
             .all()
 
-        return races
+        var result: [RaceDto] = []
+        for race in races {
+            result.append(
+                RaceDto(id: race.id, title: race.title, date: race.date, schedules: race.schedules))
+        }
+
+        return result
     }
 
     @Sendable
