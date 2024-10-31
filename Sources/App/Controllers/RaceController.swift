@@ -71,7 +71,9 @@ struct RaceController: RouteCollection {
         var result: [RaceDto] = []
         for race in races {
             result.append(
-                RaceDto(id: race.id, title: race.title, date: race.date, schedules: race.schedules))
+                RaceDto(
+                    id: race.id, title: race.title, date: race.date,
+                    schedules: race.schedules.sorted { $0.date < $1.date }))
         }
 
         return result
